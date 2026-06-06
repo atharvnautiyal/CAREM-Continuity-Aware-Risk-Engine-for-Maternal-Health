@@ -6,7 +6,7 @@ def create_table():
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS patient_records (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             patient_name VARCHAR(100) NOT NULL,
             patient_id VARCHAR(50) NOT NULL,
             age INT,
@@ -33,7 +33,7 @@ def insert_record(data: dict, result: dict):
             patient_name, patient_id, age, systolic_bp, diastolic_bp,
             bs, body_temp, heart_rate, risk_level, recommendation
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """
 
     values = (
