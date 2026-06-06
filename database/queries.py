@@ -79,14 +79,14 @@ def get_records_by_patient_id(patient_id, limit=3):
     cursor = conn.cursor()
 
     query = """
-        SELECT patient_name, patient_id, age, systolic_bp, diastolic_bp,
-               bs, body_temp, heart_rate, risk_level, recommendation, created_at
-        FROM patient_records
-        WHERE patient_id = %s
-        ORDER BY created_at DESC
-        LIMIT %s
+    SELECT patient_name, patient_id, age, systolic_bp, diastolic_bp,
+           bs, body_temp, heart_rate, risk_level, recommendation, created_at
+    FROM patient_records
+    WHERE patient_id = ?
+    ORDER BY created_at DESC
+    LIMIT ?
     """
-
+    
     cursor.execute(query, (patient_id, limit))
     rows = cursor.fetchall()
 
